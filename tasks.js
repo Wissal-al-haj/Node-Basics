@@ -37,10 +37,13 @@ function onDataReceived(text) {
   if (text === 'quit\n' || text ==='exit\n') {
     quit();
   }
-  else if(text === 'hello\n'){
+  else if(text === 'hello \n '){
     hello();
   }
-  else if(text === 'help\n'){
+  else if(text.slice(0,5) === 'hello'){
+    helloo(text.slice(5));
+  }
+  else if(text=== 'help'){
     help();
   }
   else{
@@ -67,7 +70,10 @@ function unknownCommand(c){
 function hello(){
   console.log('hello!')
 }
-
+function helloo(a){
+  let w = a.trim()
+  console.log("hello "+w +"!")
+}
 /**
  * help command
  *
