@@ -34,22 +34,19 @@ function startApp(name){
  * @returns {void}
  */
 function onDataReceived(text) {
-  if (text === 'quit\n') {
+  if (text === 'quit\n' || text ==='exit\n') {
     quit();
   }
   else if(text === 'hello\n'){
     hello();
   }
+  else if(text === 'help\n'){
+    help();
+  }
   else{
     unknownCommand(text);
   }
 }
-function onDataReceived(text) {
-  if (text === 'exit\n') {
-    quit();
-  }
-}
-
 /**
  * prints "unknown command"
  * This function is supposed to run when all other commands have failed
@@ -69,6 +66,10 @@ function unknownCommand(c){
  */
 function hello(){
   console.log('hello!')
+}
+/**function liste */
+function help(){
+  console.log("hello\n quit\n exit\n")
 }
 
 
