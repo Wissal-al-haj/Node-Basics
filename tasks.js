@@ -67,7 +67,12 @@ function unknownCommand(c){
 function hello(){
   console.log('hello!')
 }
-/**function liste */
+
+/**
+ * help command
+ *
+ * @returns {void}
+ */
 function help(){
   console.log("hello\n quit\n exit\n")
 }
