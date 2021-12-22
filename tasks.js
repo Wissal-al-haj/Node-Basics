@@ -72,8 +72,8 @@ function hello(){
 }
 function helloo(a){
   let w = a.trim()
-  console.log("hello "+w +"!")
-  
+  console.log("hello "+w+"!")
+
 }
 /**
  * help command
