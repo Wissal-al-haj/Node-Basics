@@ -44,7 +44,11 @@ function onDataReceived(text) {
     unknownCommand(text);
   }
 }
-
+function onDataReceived(text) {
+  if (text === 'exit\n') {
+    quit();
+  }
+}
 
 /**
  * prints "unknown command"
