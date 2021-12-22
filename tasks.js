@@ -33,6 +33,7 @@ function startApp(name){
  * @param  {string} text data typed by the user
  * @returns {void}
  */
+ 
 function onDataReceived(text) {
   if (text === 'quit\n' || text ==='exit\n') {
     quit();
@@ -45,6 +46,9 @@ function onDataReceived(text) {
   }
   else if(text=== 'help'){
     help();
+  }
+  else if (text === 'array\n'){
+    arraylist();
   }
   else{
     unknownCommand(text);
@@ -94,6 +98,11 @@ function quit(){
   console.log('Quitting now, goodbye!')
   process.exit();
 }
-
+/**arraylist */
+let list=["wissal","21","akkar al atika"]
+function arraylist(){
+  for(i=0;i<=list.length-1;i++)
+  console.log (list[i])
+}
 // The following line starts the application
 startApp("wissal al haj")
