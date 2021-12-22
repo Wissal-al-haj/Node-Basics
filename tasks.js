@@ -49,6 +49,10 @@ function onDataReceived(text) {
   }
   else if (text === 'array\n'){
     arraylist();
+    
+  }
+  else if(text.trim().split(" ")[0] === 'add'){
+    add(text);
   }
   else{
     unknownCommand(text);
@@ -100,9 +104,23 @@ function quit(){
 }
 /**arraylist */
 let list=["wissal","21","akkar al atika"]
-function arraylist(){
+function arraylist(a){
   for(i=0;i<=list.length-1;i++)
-  console.log (list[i])
+  console.log (`${i}-${list[i]}`)
 }
+function add(text){
+
+  let n=text.slice(4);
+  if(n.length > 0){
+  list.push(n.trim());
+  console.log(n);
+
+  }else{
+    console.log('Error you need to add a word')
+  }
+}
+
+
+
 // The following line starts the application
 startApp("wissal al haj")
