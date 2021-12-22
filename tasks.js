@@ -81,7 +81,7 @@ function helloo(a){
  * @returns {void}
  */
 function help(){
-  console.log("hello\n quit\n exit\n")
+  console.log("hello:print hello\n quit:quit the program\n exit:quit the program\n hello x:print hello and the word you write")
 }
 
 
