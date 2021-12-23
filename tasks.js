@@ -54,21 +54,14 @@ function onDataReceived(text) {
   else if(text.trim().split(" ")[0] === 'add'){
     add(text);
   }
-  else if(text === 'last\n'){
-    last();
-  }
-  else if(text === 'remove 2\n'){
-    second();
-
-  }
-  else if(text === 'remove 1\n'){
-    first();
-
-  }
+  else if(text.trim().split(" ")[0] == 'remove'){
+    remove(text.trim().split(" ")[1]);
+  } 
   else{
     unknownCommand(text);
   }
 }
+
 /**
  * prints "unknown command"
  * This function is supposed to run when all other commands have failed
@@ -79,7 +72,6 @@ function onDataReceived(text) {
 function unknownCommand(c){
   console.log('unknown command: "'+c.trim()+'"')
 }
-
 
 /**
  * Says hello
@@ -103,7 +95,6 @@ function help(){
   console.log("hello:print hello\n quit:quit the program\n exit:quit the program\n hello x:print hello and the word you write array:show your elements \n add:add an element to your array\n remove:remove your last element \n remove 1:remove your first element\nremove 2:remove your second element" )
 }
 
-
 /**
  * Exits the application
  *
@@ -113,43 +104,35 @@ function quit(){
   console.log('Quitting now, goodbye!')
   process.exit();
 }
+
 /**arraylist */
 let list=["wissal","21","akkar al atika"]
-function arraylist(a){
+function arraylist(){
   for(i=0;i<=list.length-1;i++)
   console.log (`${i}-${list[i]}`)
 }
+/**add */
 function add(text){
-
   let n=text.slice(4);
   if(n.length > 0){
   list.push(n.trim());
   console.log(n);
-
   }
   else{
     console.log('Error you need to add a word')
   }
-  
+}
+function remove(item){
+ for(i=0;i<list.length;i++){
+   if(item == i){
+    list.splice(i,1);
+    console.log(list)
+  }
+ }
+// console.log("index not found");
+ 
 }
 
-//delete last elem
-function last(){
-  tasks.pop();
-  console.log(list);
-}
-
-//remove second elem
-function second(){
-  list.splice(1, 1);
-  console.log(list);
-}
-
-//remove first elem
-function first(){
-  list.shift();
-  console.log(list);
-}
 
 
 // The following line starts the application
