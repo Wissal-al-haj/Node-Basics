@@ -100,7 +100,7 @@ function helloo(a){
  * @returns {void}
  */
 function help(){
-  console.log("hello:print hello\n quit:quit the program\n exit:quit the program\n hello x:print hello and the word you write")
+  console.log("hello:print hello\n quit:quit the program\n exit:quit the program\n hello x:print hello and the word you write array:show your elements \n add:add an element to your array\n remove:remove your last element \n remove 1:remove your first element\nremove 2:remove your second element" )
 }
 
 
