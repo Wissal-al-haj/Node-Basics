@@ -54,6 +54,17 @@ function onDataReceived(text) {
   else if(text.trim().split(" ")[0] === 'add'){
     add(text);
   }
+  else if(text === 'last\n'){
+    last();
+  }
+  else if(text === 'remove 2\n'){
+    second();
+
+  }
+  else if(text === 'remove 1\n'){
+    first();
+
+  }
   else{
     unknownCommand(text);
   }
@@ -115,11 +126,30 @@ function add(text){
   list.push(n.trim());
   console.log(n);
 
-  }else{
+  }
+  else{
     console.log('Error you need to add a word')
   }
+  
 }
 
+//delete last elem
+function last(){
+  tasks.pop();
+  console.log(list);
+}
+
+//remove second elem
+function second(){
+  list.splice(1, 1);
+  console.log(list);
+}
+
+//remove first elem
+function first(){
+  list.shift();
+  console.log(list);
+}
 
 
 // The following line starts the application
