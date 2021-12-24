@@ -33,7 +33,8 @@ function startApp(name){
  * @param  {string} text data typed by the user
  * @returns {void}
  */
- 
+
+/**all camand */
 function onDataReceived(text) {
   if (text === 'quit\n' || text ==='exit\n') {
     quit();
@@ -41,10 +42,10 @@ function onDataReceived(text) {
   else if(text === 'hello\n'){
     hello();
   }
-  else if(text.slice(0,5) === 'hello'){
-    helloo(text.slice(5));
+  else if (text.trim().split(" ")[0] === "hello") {
+    hello(text);
   }
-  else if(text=== 'help'){
+  else if(text=== 'help\n'){
     help();
   }
   else if (text === 'array\n'){
@@ -57,6 +58,16 @@ function onDataReceived(text) {
   else if(text.trim().split(" ")[0] == 'remove'){
     remove(text.trim().split(" ")[1]);
   } 
+  else if(text.trim().split(" ")[0] == 'edit'){
+    edit(text.trim().split(" ")[1]);
+  } 
+  else if(text.trim().split(" ")[0] === 'check'){
+    check(text);
+   }
+   else if(text.trim().split(" ")[0] === 'uncheck'){
+     uncheck(text)
+   }
+   
   else{
     unknownCommand(text);
   }
@@ -78,64 +89,125 @@ function unknownCommand(c){
  *
  * @returns {void}
  */
-function hello(){
-  console.log('hello!')
+function hello(text)
+{
+  var msg=text.slice(6);
+  if(msg.length > 0)
+  {
+    console.log(`hello ${msg}`);
+  }
+  else
+  {
+    /**added the handling empty state  */
+    console.log('hello')
+  }
 }
-function helloo(a){
-  let w = a.trim()
-  console.log("hello "+w+"!")
-
-}
-/**
- * help command
- *
- * @returns {void}
- */
-function help(){
-  console.log("hello:print hello\n quit:quit the program\n exit:quit the program\n hello x:print hello and the word you write array:show your elements \n add:add an element to your array\n remove:remove your last element \n remove 1:remove your first element\nremove 2:remove your second element" )
-}
-
 /**
  * Exits the application
  *
  * @returns {void}
  */
-function quit(){
+function quit()
+{
   console.log('Quitting now, goodbye!')
   process.exit();
 }
 
 /**arraylist */
 let list=["wissal","21","akkar al atika"]
-function arraylist(){
+function arraylist()
+{
   for(i=0;i<=list.length-1;i++)
   console.log (`${i}-${list[i]}`)
 }
+
 /**add */
-function add(text){
+function add(text)
+{
   let n=text.slice(4);
-  if(n.length > 0){
+  if(n.length > 0)
+  {
   list.push(n.trim());
   console.log(n);
   }
-  else{
+  else
+  {
     console.log('Error you need to add a word')
   }
 }
-function remove(item){
- for(i=0;i<list.length;i++){
-   if(item == (i)){
+
+/**remove */
+function remove(item)
+{
+ for(i=0;i<list.length;i++)
+ {
+   if(item == (i))
+   {
     list.splice((i-1),1);
     console.log(list)
   }
  }
  if(item > i)
  console.log("index not found");
-
- 
 }
 
+/**edit */
+function edit(index,item)
+{
+  for(i=0;i<list.length;i++)
+  {
+    if(index == (i))
+    {
+      list.splice((i-1),1,(""+item));
+      console.log(list)
+    }
+  }
+  if(index>i || index<i)
+  {console.log("index incorrect or unavailble")}
+  
+} 
 
+/**chech and uncheck */
+let Status =[true,false];
+let taskString;
+function ElementStatus()
+{
+  list.forEach((element,index) =>
+  {
+    if(Status[index]===true)
+    {
+      taskString="[✓]";
+    }
+    else
+    {
+      taskString="[ ]";
+    }
+    console.log(`${index}-${taskString} ${list[index]}`)
+  });
+}
+
+/**check */
+function check(text)
+{
+  var index = text.trim().split(" ")[1];
+  Status[index] = true;
+}
+
+/**uncheck */
+function uncheck(text)
+{
+  var index = text.trim().split(" ")[1];
+  Status[index] = false;
+}
+
+/**
+ * help command
+ *
+ * @returns {void}
+ */
+ function help(){
+  console.log("hello:print hello\n\nquit:quit the program\n\nexit:quit the program\n\nhello x:print hello and the word you write\n\narray:show your elements\n\nadd:add an element to your array\n\nremove:remove your last element\n\nremove i:remove the element in the index\n\ncheck:to put check the item you want\n\nuncheck:to remove the check\n\nedit:to edit an element in your array" )
+}
 
 // The following line starts the application
 startApp("wissal al haj")
