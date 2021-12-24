@@ -124,12 +124,14 @@ function add(text){
 }
 function remove(item){
  for(i=0;i<list.length;i++){
-   if(item == i){
-    list.splice(i,1);
+   if(item == (i)){
+    list.splice((i-1),1);
     console.log(list)
   }
  }
-// console.log("index not found");
+ if(item > i)
+ console.log("index not found");
+
  
 }
 
